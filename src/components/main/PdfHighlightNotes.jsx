@@ -51,11 +51,11 @@ const PdfHighlightNotes = () => {
     setCurrentRegion(null);
   };
 
-  const handleRegionClick = (region) => {
-    setCurrentRegion(region);
-    setNote(region.note || "");
-    setShowModal(true);
-  };
+  // const handleRegionClick = (region) => {
+  //   setCurrentRegion(region);
+  //   setNote(region.note || "");
+  //   setShowModal(true);
+  // };
 
   const addNewRegion = () => {
     const newRegion = {

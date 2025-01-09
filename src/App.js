@@ -1,5 +1,5 @@
-import Navbar from './components/common/Navbar';
-import Dashboard from './components/main/Dashboard';
+// import Navbar from './components/common/Navbar';
+// import Dashboard from './components/main/Dashboard';
 import PdfHighlightNotes from './components/main/PdfHighlightNotes';
 import 'bootstrap/dist/css/bootstrap.css';
 
