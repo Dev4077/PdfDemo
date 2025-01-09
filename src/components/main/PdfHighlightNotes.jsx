@@ -51,11 +51,11 @@ const PdfHighlightNotes = () => {
     setCurrentRegion(null);
   };
 
-  // const handleRegionClick = (region) => {
-  //   setCurrentRegion(region);
-  //   setNote(region.note || "");
-  //   setShowModal(true);
-  // };
+  const handleRegionClick = (region) => {
+    setCurrentRegion(region);
+    setNote(region.note || "");
+    setShowModal(true);
+  };
 
   const addNewRegion = () => {
     const newRegion = {
@@ -79,12 +79,14 @@ const PdfHighlightNotes = () => {
     );
   };
 
-  const handleDeleteRegion = (id) => {
-    setSelectedRegions((prev) => prev.filter((region) => region.id !== id));
-  };
-
   const handlePageChange = (page) => {
     setCurrentPage(page);
+  };
+
+  const handleDeleteRegion = (id) => {
+
+    setSelectedRegions((prev) => prev.filter((region) => region.id !== id));
+
   };
 
   return (
@@ -142,6 +144,7 @@ const PdfHighlightNotes = () => {
                       background: "rgba(128, 0, 128, 0.2)",
                       position: "absolute",
                     }}
+                    onClick={() => handleRegionClick(region)}
                   >
                     <div
                       style={{
