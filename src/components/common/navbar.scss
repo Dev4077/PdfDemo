@@ -1,0 +1,33 @@
+#navbar {
+    @media (min-width: 600px) {
+        .css-hyum1k-MuiToolbar-root {
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-block: 8px;
+        }
+    }
+
+    .css-1h3jl79-MuiInputBase-root .MuiInputBase-input {
+        padding: 8px 8px 8px 0px;
+        padding-left: 49px;
+        -webkit-transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+ 
+    }
+
+    @media (min-width: 900px) {
+            .css-1h3jl79-MuiInputBase-root .MuiInputBase-input {
+                width: 1074px;
+                padding: 16px 8px 16px 0px;
+                padding-left: 49px;
+            }
+        }
+
+    .css-l5n1rd {
+        background-color: transparent;
+        }
+
+        .css-1ovy93z{
+            margin-right: 0;
+        }
+}

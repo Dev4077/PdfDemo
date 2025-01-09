@@ -1,0 +1,19 @@
+#Dashboard{
+    margin-top: 100px;
+    @media (min-width: 900px) {
+        .leftSide_Filter{
+           margin-inline-start: 340px;
+        }
+        .rightSide_Main{
+            margin-inline-end: 340px;
+        }
+    }
+    .css-1633um2-MuiPaper-root{
+      box-shadow: none;
+    }
+    .card-details{
+        border-radius: 11px;
+        margin-bottom: 11px;
+    }
+   
+}
