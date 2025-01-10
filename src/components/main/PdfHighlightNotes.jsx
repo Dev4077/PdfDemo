@@ -15,7 +15,7 @@ import {
   PaginationLink,
 } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import './PdfNotes.scss'
 // Set worker URL for PDF.js
 pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
@@ -96,7 +96,7 @@ const PdfHighlightNotes = () => {
         type="file"
         accept="application/pdf"
         onChange={handlePdfUpload}
-        className="mb-4"
+        className="form-control mb-4"
       />
 
       {pdfFile && (
@@ -104,13 +104,14 @@ const PdfHighlightNotes = () => {
           <Document
             file={pdfFile}
             onLoadSuccess={onDocumentLoadSuccess}
-            className="mb-4"
+            className="mb-4 document-container"
           >
             <div style={{ position: "relative", marginBottom: "20px" }}>
               <Page
                 pageNumber={currentPage}
                 renderTextLayer={false}
                 renderAnnotationLayer={false}
+                width={window.innerWidth < 768 ? 300 : 600}
               />
               {selectedRegions
                 .filter((region) => region.page === currentPage)
@@ -144,7 +145,7 @@ const PdfHighlightNotes = () => {
                       background: "rgba(128, 0, 128, 0.2)",
                       position: "absolute",
                     }}
-                    onClick={() => handleRegionClick(region)}
+
                   >
                     <div
                       style={{
@@ -156,21 +157,32 @@ const PdfHighlightNotes = () => {
                       }}
                     >
                       <button
+                        onClick={() => handleRegionClick(region)}
+                        onTouchStart={(e) => {
+                          e.preventDefault();
+                          handleRegionClick(region);
+                        }}
+                        className="btn btn-primary btn-sm me-1"
+                      >
+                        +
+                      </button>
+                      <button
                         onClick={() => handleDeleteRegion(region.id)}
-                        className="btn btn-danger btn-sm"
+                        className="btn btn-danger btn-sm "
                       >
                         X
                       </button>
+
                     </div>
                   </Rnd>
                 ))}
-              <button onClick={addNewRegion} className="btn btn-primary mt-3">
+              <button onClick={addNewRegion} className="btn btn-primary mt-3 w-100">
                 Add Selection to Page {currentPage}
               </button>
             </div>
           </Document>
 
-          <Pagination>
+          <Pagination className="d-flex justify-content-center flex-wrap">
             <PaginationItem disabled={currentPage <= 1}>
               <PaginationLink
                 previous
@@ -208,8 +220,11 @@ const PdfHighlightNotes = () => {
           </ListGroupItem>
         ))}
       </ListGroup>
-
-      <Modal isOpen={showModal} toggle={() => setShowModal(false)}>
+      <Modal
+        isOpen={showModal}
+        toggle={() => setShowModal(false)}
+        size="sm"
+      >
         <ModalHeader toggle={() => setShowModal(false)}>Add a Note</ModalHeader>
         <ModalBody>
           <Input
